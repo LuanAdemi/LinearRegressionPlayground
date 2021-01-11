@@ -38,6 +38,7 @@ mathjaxMap = {
 }
 
 app = dash.Dash(__name__, external_stylesheets=external_stylesheets, external_scripts=external_scripts)
+server = app.server
 
 app.layout = html.Div(style={'height':'100%'},children=[
     dcc.Store(id="store"),
