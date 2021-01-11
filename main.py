@@ -56,7 +56,20 @@ app.layout = html.Div(style={'height':'100%'},children=[
             html.I(className="fa fa-forward", style={"float":"left","lineHeight":"55px"}),
             html.P('Step', style={"float":"left","lineHeight":"55px","margin-left":"10px"})
         ]),
-        html.H5("1.1 Linear Regression",style={"position":"absolute", "lineHeight":"40px","width":"100%","text-align":"center","z-index":"-10"}),
+        html.Div(style={"position":"absolute", "height":"55px","width":"calc(100% - 100px)","z-index":"-10","display":"flex","justify-content":"center"}, children=[
+            html.Div(children=[
+                html.Div(style={"display":"flex","justify-content":"center","align-items":"center","height":"100%","float":"left","width":"50px"}, children=[
+                    html.Span(className="dot"),
+                ]),
+
+                html.H5("1.1 Linear Regression", style={"float":"left", "lineHeight":"45px"}),
+            ]),
+
+
+
+
+        ]),
+
 
         html.A(
 
@@ -323,12 +336,12 @@ def bakePlots(df, m, c, zMSE, loss):
     )
 
     fig2 = go.Figure()
-    fig2.add_trace(go.Scatter(x=df["X"], y=df["Y"], mode='markers',name="Data"))
+    fig2.add_trace(go.Scatter(x=df["X"], y=df["Y"], mode='markers',name="Data", marker=dict(color='#1940FF')))
     fig2.add_trace(go.Scatter(x=x1, y=(m*x1+c), mode='lines',name=f'f(x)={round(m,2)}x+{round(c,2)}'))
     fig2.update_layout(paper_bgcolor = '#F2F3F4', title="Result", uirevision='constant')
 
     fig3 = go.Figure()
-    fig3.add_trace(go.Scatter(x=[i for i in range(len(loss))], y=loss, mode='lines',name="Loss"))
+    fig3.add_trace(go.Scatter(x=[i for i in range(len(loss))], y=loss, mode='lines',name="Loss",marker=dict(color='#1940FF')))
     fig3.update_layout(paper_bgcolor = '#F2F3F4', title="Loss", uirevision='constant')
     return fig1, fig2, fig3
 
